@@ -1,4 +1,4 @@
-import { IsNotEmpty, IsNumber } from "class-validator";
+import { IsNotEmpty, IsNumber, IsNumberString } from "class-validator";
 
 
 export interface IData{
@@ -16,15 +16,15 @@ export interface IResult{
 }
 
 export class IValue{
-    @IsNumber()
+    @IsNumberString()
     @IsNotEmpty()
     bill: number;
 
-    @IsNumber()
+    @IsNumberString()
     @IsNotEmpty()
     tip: number;
 
-    @IsNumber()
+    @IsNumberString()
     @IsNotEmpty()
     people: number;
 }

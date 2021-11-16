@@ -19,18 +19,18 @@ export class CalculatorService {
   //amountCalculate()
 
   isValid(data: IData): boolean{
+    if (isNaN(data.bill) || isNaN(data.people) || isNaN(data.tip)) return false
     if (data.bill < 0 || data.tip < 0 || data.people < 1) return false;
-    if (data.bill == null || data.tip == null || data.people == null) return false;
+    if (data.bill === null || data.tip === null || data.people === null) return false;
     return true;
   }
 
   calculate(data: IData): IResult{
+    if(!this.isValid(data)) return {result: false};
     data.bill = Number(data.bill);
     data.people = Number(data.people);
     data.tip = Number(data.tip);
     //return {result: false, total: data.bill}
-    
-    if(!this.isValid(data)) return {result: false};
     return this.getResult(data);
   }
 
